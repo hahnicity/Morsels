@@ -1,0 +1,4 @@
+.gaedata
+*.pyc
+.DS_Store
+.idea/*
