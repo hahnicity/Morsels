@@ -1,5 +1,5 @@
 ##Morsels
-An implementation of [jQuery File Upload](https://github.com/blueimp/jQuery-File-Upload) with a Django / Google AppEngine backend.
+An implementation of [jQuery File Upload](https://github.com/blueimp/jQuery-File-Upload) with a Django / Google AppEngine backend that supports chunked uploads and resume.
 
 ###Demo
 [Morsels demo app](http://morselsdemo.appspot.com)
