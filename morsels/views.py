@@ -80,10 +80,11 @@ class MyMorselDeleteView(DeleteView):
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
+        self.pk = kwargs['pk']
         return super(MyMorselDeleteView, self).dispatch(request, *args, **kwargs)
 
     def get_object(self, *args, **kwargs):
-        return get_object_or_404(MyMorsel, id=self.request.kwargs['pk'])
+        return get_object_or_404(MyMorsel, id=self.pk)
 
     def get_success_url(self):
         return reverse('mymorsel_delete_callback', kwargs={'pk': self.kwargs.get('pk')})
