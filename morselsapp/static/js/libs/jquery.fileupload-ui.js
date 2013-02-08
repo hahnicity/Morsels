@@ -632,13 +632,13 @@
             this._on(fileUploadButtonBar.find('.start'), {
                 click: function (e) {
                     e.preventDefault();
-                    filesList.find('button.start').click();
+                    filesList.find('.start button').click();
                 }
             });
             this._on(fileUploadButtonBar.find('.cancel'), {
                 click: function (e) {
                     e.preventDefault();
-                    filesList.find('button.cancel').click();
+                    filesList.find('.cancel button').click();
                 }
             });
             this._on(fileUploadButtonBar.find('.delete'), {
@@ -674,9 +674,9 @@
         _initEventHandlers: function () {
             this._super();
             this._on(this.options.filesContainer, {
-                'click button.start': this._startHandler,
-                'click button.cancel': this._cancelHandler,
-                'click button.delete': this._deleteHandler
+                'click .start button': this._startHandler,
+                'click .cancel button': this._cancelHandler,
+                'click .delete button': this._deleteHandler
             });
             this._initButtonBarEventHandlers();
         },
