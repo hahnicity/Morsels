@@ -10,8 +10,8 @@ from django.views.generic.edit import DeleteView
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from morsels.models import MyMorsel
-from morsels import utils
+from morselsapp.models import MyMorsel
+from morselsapp import utils
 
 import logging
 
@@ -27,7 +27,7 @@ class UploadMedia(TemplateView):
 
         #If files are chunked, the original file metadata is stored in extra META headers and the
         #POSTed file is called 'blob'. For files that aren't chunked, use the POSTed file directly.
-        expected_file_size = request.META.get('HTTP_X_FILE_SIZE', None) or blob_size
+        expected_file_size = utils.get_filesize_from_request(request.META) or blob_size
         expected_file_name = request.META.get('HTTP_X_FILE_NAME', None) or blob_name
 
         logging.debug("Blob got: %s (expected: %s), size got: %s (expected: %s)" % (
@@ -112,14 +112,14 @@ class UploadedMyMorselView(TemplateView):
             "size": mymorsel.file_object._get_size(),
             "delete_url": reverse('delete_mymorsel', kwargs={'pk': id}),
             "delete_type": "POST",
-            }
-        
+        }
+
         #Only return a thumbnail_url if the mymorsel has one
         thumb = mymorsel.thumbnail(pixel_size=100)
         if thumb is not None:
             mymorsel_data.update({"thumbnail_url": thumb})
 
-        data = simplejson.dumps([mymorsel_data])
+        data = simplejson.dumps({'files': [mymorsel_data]})
         HttpResponse.status_code = 200
         return HttpResponse(data, mimetype='application/json')
 
@@ -127,4 +127,4 @@ uploaded_mymorsel = UploadedMyMorselView.as_view()
 
 
 
-    
+

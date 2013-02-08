@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from morsels import views
+from morselsapp import views
 
 urlpatterns = patterns('',
     #Upload / mymorsel handlers

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Morsels demo</title>
+		<meta charset="utf-8">
+		<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+		{% block extra_css %}{% endblock %}
+	</head>
+	<body>
+		<div id="content">{% block content %}{% endblock %}</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="/static/js/libs/underscore.min.js"></script>
+		{% block extra_js %}{% endblock %}
+		<script src="/static/js/start.js"></script>
+	</body>
+</html>
+

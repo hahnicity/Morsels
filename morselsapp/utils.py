@@ -143,3 +143,11 @@ def append_string_to_blobstore_file(blobstore_file_name, string):
         for i in range(0, len(string), blobstore_write_limit):
             blobstore_file.write(string[i:i + blobstore_write_limit])
             time.sleep(0.25)
+
+
+def get_filesize_from_request(meta):
+    expected_file_size = meta.get('HTTP_CONTENT_RANGE', None)
+    if expected_file_size:
+        expected_file_size = expected_file_size.split('/')[1]
+
+    return expected_file_size
