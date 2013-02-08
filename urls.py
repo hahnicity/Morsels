@@ -9,5 +9,5 @@ handler500 = 'djangotoolbox.errorviews.server_error'
 urlpatterns = patterns('',
     (r'^$', RedirectView.as_view(url=reverse_lazy('upload_media'))), #Redirect homepage to upload_media
     (r'^_ah/warmup$', 'djangoappengine.views.warmup'),
-    (r'^morsels/', include('morsels.urls')),
+    (r'^morsels/', include('morselsapp.urls')),
 )

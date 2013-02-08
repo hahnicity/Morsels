@@ -10,8 +10,8 @@ from django.views.generic.edit import DeleteView
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from morsels.models import MyMorsel
-from morsels import utils
+from morselsapp.models import MyMorsel
+from morselsapp import utils
 
 import logging
 
@@ -113,7 +113,7 @@ class UploadedMyMorselView(TemplateView):
             "delete_url": reverse('delete_mymorsel', kwargs={'pk': id}),
             "delete_type": "POST",
             }
-        
+
         #Only return a thumbnail_url if the mymorsel has one
         thumb = mymorsel.thumbnail(pixel_size=100)
         if thumb is not None:
@@ -127,4 +127,4 @@ uploaded_mymorsel = UploadedMyMorselView.as_view()
 
 
 
-    
+

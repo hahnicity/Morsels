@@ -27,11 +27,11 @@ handlers:
   expiration: '0'
 
 - url: /static
-  static_dir: morsels/static
+  static_dir: morselsapp/static
 
 - url: /.*
   script: djangoappengine.main.application
-  
+
 skip_files:
 - ^(.*/)?app\.yaml
 - ^(.*/)?.*\.py[co]
