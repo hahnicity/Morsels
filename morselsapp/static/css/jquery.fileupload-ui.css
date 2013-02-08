@@ -32,9 +32,9 @@
 .fileupload-buttonbar .toggle {
   margin-bottom: 5px;
 }
-/*.files .progress {
+.files .progress {
   width: 200px;
-}*/
+}
 .progress-animated .bar {
   background: url(../img/progressbar.gif) !important;
   filter: none;
@@ -75,9 +75,9 @@
     display: inline-block;
     word-wrap: break-word;
   }
-  /*.files .progress {
+  .files .progress {
     width: 20px;
-  }*/
+  }
   .files .delete {
     width: 60px;
   }

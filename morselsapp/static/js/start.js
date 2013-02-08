@@ -1,12 +1,17 @@
+/*global $, _ */
 var morsels = window.morsels || {};
 
-morsels.start = {
-    init: function() {
-        "use strict";
-        if ($("#fileupload").size()) {
-	        morsels.fileUpload.init();
-        }
-    }
-};
+(function () {
+	"use strict";
 
-morsels.start.init();
+	morsels.start = {
+		init: function () {
+			if ($("#fileupload").size()) {
+				morsels.fileUpload.init();
+			}
+		}
+	};
+
+	morsels.start.init();
+
+}());
