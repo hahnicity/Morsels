@@ -15,6 +15,7 @@ from morselsapp import utils
 
 import logging
 
+
 class UploadMedia(TemplateView):
     """ Handles media uploads; currently supports images and audio """
     template_name = 'upload.html'
@@ -27,8 +28,8 @@ class UploadMedia(TemplateView):
 
         #If files are chunked, the original file metadata is stored in extra META headers and the
         #POSTed file is called 'blob'. For files that aren't chunked, use the POSTed file directly.
-        expected_file_size = utils.get_filesize_from_request(request.META) or blob_size
-        expected_file_name = request.META.get('HTTP_X_FILE_NAME', None) or blob_name
+        expected_file_size = utils.get_filesize_from_request_meta(request.META) or blob_size
+        expected_file_name = utils.get_filename_from_request_meta(request.META) or blob_name
 
         logging.debug("Blob got: %s (expected: %s), size got: %s (expected: %s)" % (
             blob_name, expected_file_name, blob_size, expected_file_size))

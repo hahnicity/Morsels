@@ -145,9 +145,19 @@ def append_string_to_blobstore_file(blobstore_file_name, string):
             time.sleep(0.25)
 
 
-def get_filesize_from_request(meta):
-    expected_file_size = meta.get('HTTP_CONTENT_RANGE', None)
-    if expected_file_size:
-        expected_file_size = expected_file_size.split('/')[1]
+def get_filename_from_request_meta(meta):
+    """ Shortcut method for splitting out the file size from request.META"""
+    http_content_disposition = meta.get('HTTP_CONTENT_DISPOSITION', None)
+    if http_content_disposition:
+        filename = http_content_disposition.split("filename=")[1].replace('\"', '')
+        return filename
+    return None
 
-    return expected_file_size
+
+def get_filesize_from_request_meta(meta):
+    """ Shortcut method for splitting out the file size from request.META"""
+    http_content_range = meta.get('HTTP_CONTENT_RANGE', None)
+    if http_content_range:
+        expected_file_size = http_content_range.split('/')[1]
+        return expected_file_size
+    return None
